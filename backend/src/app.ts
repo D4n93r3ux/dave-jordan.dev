@@ -4,7 +4,7 @@ import express from 'express';
 import type { Handler } from 'express';
 import loaders from './loaders';
 
-export default ({
+export default async ({
   config,
   logger,
   httpLogger
@@ -15,7 +15,7 @@ export default ({
 }) => {
   const app = express();
 
-  loaders({ app, logger, httpLogger });
+  await loaders({ app, config, logger, httpLogger });
 
   return app;
 };
