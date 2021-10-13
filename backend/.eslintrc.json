@@ -1,0 +1,45 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "jest/globals": true
+    },
+    "extends": [
+        "airbnb-typescript-base",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:import/recommended",
+        "plugin:import/typescript",
+        "plugin:jest/all",
+        "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module",
+        "project": [ "./tsconfig.json" ]
+    },
+    // Enables new rules
+    "plugins": [
+        "import",
+        "@typescript-eslint",
+        "jest",
+        "prettier"
+    ],
+    "rules": {
+        "import/prefer-default-export": "off", // occasionally a singular import needs to be named
+        "@typescript-eslint/lines-between-class-members": "off", // aesthetic preference
+        "@typescript-eslint/no-misused-promises": [
+            "error",
+            {
+                "checksVoidReturn": false // async request handlers return Promise<void>
+            }
+        ],
+        "jest/lowercase-name": "off", // supertest describe block names tend to begin with the http verb in caps
+        "jest/require-top-level-describe": "off", // option to forgo nesting with describe blocks
+        "class-methods-use-this": "warn", // during TDD this may not always be the case
+        "no-restricted-syntax": "off",
+        "no-underscore-dangle": "off", // useful for indicating private members
+        "no-plusplus": [ "error", { "allowForLoopAfterthoughts": true }]
+    }
+  }
