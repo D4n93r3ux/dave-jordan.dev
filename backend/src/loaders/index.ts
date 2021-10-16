@@ -5,19 +5,19 @@ import type { Logger } from 'winston';
 import type { Config } from '../config';
 
 export default async ({
-  app,
+  expressApp,
   config,
   logger,
   httpLogger,
   mainRouter
 }: {
-  app: Application;
+  expressApp: Application;
   config: Config;
   logger: Logger;
   httpLogger: Handler;
   mainRouter: Router;
 }) => {
-  loadExpress({ app, config, logger, httpLogger, mainRouter });
+  loadExpress({ expressApp, config, logger, httpLogger, mainRouter });
   logger.info('Express loaded');
 
   await loadMongoose({ config, logger });

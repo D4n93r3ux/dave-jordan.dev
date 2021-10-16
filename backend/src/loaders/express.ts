@@ -4,13 +4,13 @@ import type { Config } from '../config';
 import type { Logger } from 'winston';
 
 export default ({
-  app,
+  expressApp: app,
   config,
   logger,
   httpLogger,
   mainRouter
 }: {
-  app: express.Application;
+  expressApp: express.Application;
   config: Config;
   logger: Logger;
   httpLogger: Handler;

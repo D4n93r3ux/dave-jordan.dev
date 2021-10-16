@@ -1,23 +1,13 @@
-import type { Config } from './config';
-import type { Logger } from 'winston';
-import express from 'express';
-import type { Handler, Router } from 'express';
-import loaders from './loaders';
+import type { Application } from 'express';
 
 export default async ({
-  config,
-  logger,
-  httpLogger,
-  mainRouter
+  expressApp: app,
+  loaders
 }: {
-  config: Config;
-  logger: Logger;
-  httpLogger: Handler;
-  mainRouter: Router;
+  expressApp: Application;
+  loaders: Promise<void>;
 }) => {
-  const app = express();
-
-  await loaders({ app, config, logger, httpLogger, mainRouter });
+  await loaders;
 
   return app;
 };
