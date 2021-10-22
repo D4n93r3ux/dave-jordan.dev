@@ -23,7 +23,7 @@ const config: Config = {
   databaseURI: process.env.DATABASE_URI as string,
   jwtSecret: process.env.JWT_SECRET as string,
   logging: {
-    level: process.env.NODE_ENV === 'test' ? 'error' : 'debug'
+    level: 'debug'
   },
   api: {
     prefix: '/api'

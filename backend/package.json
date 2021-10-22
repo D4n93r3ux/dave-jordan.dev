@@ -5,9 +5,10 @@
   "license": "MIT",
   "scripts": {
     "start": "clear && nodemon --exec node --unhandled-rejections=strict -r ts-node/register ./src/index.ts",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll --detectOpenHandles"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/express": "^4.17.13",
     "@types/jest": "^27.0.2",
     "@types/jsonwebtoken": "^8.5.5",
@@ -22,6 +23,7 @@
     "eslint-plugin-jest": "^25.0.5",
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "^27.2.5",
+    "mongodb-memory-server": "^7.5.1",
     "nodemon": "^2.0.13",
     "prettier": "^2.4.1",
     "supertest": "^6.1.6",
@@ -31,6 +33,7 @@
     "webpack": "^5.58.2"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "di-hard": "^2.0.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
