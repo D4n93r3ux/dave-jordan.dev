@@ -16,29 +16,36 @@ import express from 'express';
 const container = di.createContainer('main');
 
 container.registerFactory('app', createApp, {
-  lifetime: Lifetime.Registration
+  lifetime: Lifetime.Registration,
+  visibility: Visibility.Public
 });
 
 container.registerValue('expressApp', express());
+container.registerFactory('loaders', loaders, {
+  lifetime: Lifetime.Registration,
+  visibility: Visibility.Public
+});
+
 container.registerValue('config', config, { visibility: Visibility.Public });
 container.registerFactory('logger', createLogger, {
-  visibility: Visibility.Public,
-  lifetime: Lifetime.Registration
+  lifetime: Lifetime.Registration,
+  visibility: Visibility.Public
 });
 container.registerFactory('httpLogger', createHttpLogger, {
-  lifetime: Lifetime.Registration
+  lifetime: Lifetime.Registration,
+  visibility: Visibility.Public
 });
-container.registerFactory('auth', createAuthMiddleware, {
-  visibility: Visibility.Public,
-  lifetime: Lifetime.Registration
-});
-container.registerFactory('loaders', loaders);
-
 container.registerFactory('mainRouter', createMainRouter, {
-  lifetime: Lifetime.Registration
+  lifetime: Lifetime.Registration,
+  visibility: Visibility.Public
 });
 
-// ===================================================================== /users
+container.registerFactory('auth', createAuthMiddleware, {
+  lifetime: Lifetime.Registration,
+  visibility: Visibility.Public
+});
+
+// =============================================================== /users route
 container.registerFactory('userRouter', createUserRouter, {
   lifetime: Lifetime.Registration,
   visibility: Visibility.Public
@@ -48,7 +55,8 @@ container.registerFactory('userController', createUserController, {
   visibility: Visibility.Public
 });
 container.registerFactory('userService', createUserService, {
-  lifetime: Lifetime.Registration
+  lifetime: Lifetime.Registration,
+  visibility: Visibility.Public
 });
 
 export default container;
