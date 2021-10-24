@@ -38,7 +38,6 @@
         "jest/lowercase-name": "off", // supertest describe block names tend to begin with the http verb in caps
         "jest/require-top-level-describe": "off", // option to forgo nesting with describe blocks
         "class-methods-use-this": "warn", // during TDD this may not always be the case
-        "no-restricted-syntax": "off",
         "no-underscore-dangle": "off", // useful for indicating private members
         "no-plusplus": [ "error", { "allowForLoopAfterthoughts": true }]
     }
