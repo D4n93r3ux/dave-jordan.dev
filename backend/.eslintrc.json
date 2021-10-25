@@ -39,6 +39,7 @@
         "jest/require-top-level-describe": "off", // option to forgo nesting with describe blocks
         "class-methods-use-this": "warn", // during TDD this may not always be the case
         "no-underscore-dangle": "off", // useful for indicating private members
-        "no-plusplus": [ "error", { "allowForLoopAfterthoughts": true }]
+        "no-plusplus": [ "error", { "allowForLoopAfterthoughts": true }],
+        "jest/require-hook": "off" // false positive in non-test file
     }
   }

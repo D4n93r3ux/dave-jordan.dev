@@ -4,3 +4,7 @@ export enum ServiceError {
   AlreadyExists,
   NotFound
 }
+
+export interface IUserReqObject {
+  user: { id: string };
+}
