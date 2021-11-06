@@ -1,0 +1,17 @@
+import React from 'react';
+
+const createSafeContext = <ContextType,>() => {
+  const context = React.createContext<ContextType | undefined>(undefined);
+
+  const useSafeContext = () => {
+    const contextValue = React.useContext(context);
+    if (!contextValue) {
+      throw new Error('useSafeContext must be inside a Provider with a value');
+    }
+    return contextValue;
+  };
+
+  return [useSafeContext, context.Provider] as const;
+};
+
+export default createSafeContext;
