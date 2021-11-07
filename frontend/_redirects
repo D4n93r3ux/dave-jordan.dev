@@ -1,2 +1,2 @@
-/api/*		http://134.209.27.22:5000/api/:splat
+/api/*		https://www.dave-jordan.dev/api/:splat
 /*		/index.html
