@@ -7,9 +7,6 @@ if (envFound.error) {
 }
 
 export type Config = {
-  api: {
-    prefix: string;
-  };
   databaseURI: string;
   jwtSecret: string;
   logging: {
@@ -24,9 +21,6 @@ const config: Config = {
   jwtSecret: process.env.JWT_SECRET as string,
   logging: {
     level: 'debug'
-  },
-  api: {
-    prefix: '/api'
   }
 };
 

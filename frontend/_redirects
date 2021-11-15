@@ -1,2 +1,2 @@
-/api/*		https://www.dave-jordan.dev/api/:splat
+/api/*		https://www.api.dave-jordan.dev/:splat
 /*		/index.html
