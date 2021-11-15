@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express from 'express';
 import type { Request, Response, NextFunction, Handler, Router } from 'express';
 import type { Logger } from 'winston';
@@ -13,6 +14,20 @@ export default ({
   logger: Logger;
   mainRouter: Router;
 }) => {
+  // const whitelist = ['https://dave-jordan.dev', 'https://www.dave-jordan.dev'];
+  // const corsOptions: CorsOptions = {
+  //   origin: (origin: string, callback: ) => {
+  //     if (whitelist.indexOf(origin) !== -1) {
+  //       callback(null, true);
+  //     } else {
+  //       callback(new Error('Not allowed by CORS'));
+  //     }
+  //   }
+  // }
+
+  // eslint-disable-next-line
+  app.use(cors());
+
   app.use(express.json());
 
   app.use(httpLogger);

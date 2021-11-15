@@ -4,13 +4,14 @@
   "main": "./build/index.js",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_ENV=production pm2 start --name iron-mern build/index.js --watch",
-    "build": "tsc",    
+    "start": "NODE_ENV=production pm2 start --name dave-jordan.dev build/index.js --watch",
+    "build": "tsc",
     "dev": "clear && nodemon --exec node --unhandled-rejections=strict -r ts-node/register ./src/index.ts",
     "test": "jest --watchAll --detectOpenHandles"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/jest": "^27.0.2",
     "@types/jsonwebtoken": "^8.5.5",
@@ -37,6 +38,7 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "di-hard": "^2.0.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
