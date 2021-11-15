@@ -1,8 +1,8 @@
-import loadExpress from './express';
-import loadMongoose from './mongoose';
 import type { Application, Handler, Router } from 'express';
 import type { Logger } from 'winston';
 import type { Config } from '../config';
+import loadExpress from './express';
+import loadMongoose from './mongoose';
 
 export default async ({
   expressApp,
@@ -11,13 +11,13 @@ export default async ({
   httpLogger,
   mainRouter
 }: {
-  expressApp: Application;
   config: Config;
-  logger: Logger;
+  expressApp: Application;
   httpLogger: Handler;
+  logger: Logger;
   mainRouter: Router;
 }) => {
-  loadExpress({ expressApp, config, logger, httpLogger, mainRouter });
+  loadExpress({ expressApp, logger, httpLogger, mainRouter });
   logger.info('Express loaded');
 
   await loadMongoose({ config, logger });
