@@ -38,7 +38,7 @@ const AuthContext: React.FC = ({ children }) => {
     }
 
     try {
-      const res = await axios.get('/api/users');
+      const res = await axios.get('/users');
 
       dispatch({
         type: TYPES.USER_LOADED,
@@ -61,7 +61,7 @@ const AuthContext: React.FC = ({ children }) => {
     };
 
     try {
-      const res = await axios.post('/api/users/signUp', formData, config);
+      const res = await axios.post('/users/signUp', formData, config);
 
       dispatch({
         type: TYPES.REGISTER_SUCCESS,
@@ -86,7 +86,7 @@ const AuthContext: React.FC = ({ children }) => {
     };
 
     try {
-      const res = await axios.post('/api/users/signIn', formData, config);
+      const res = await axios.post('/users/signIn', formData, config);
 
       dispatch({
         type: TYPES.LOGIN_SUCCESS,
