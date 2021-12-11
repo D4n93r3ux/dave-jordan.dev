@@ -3,12 +3,16 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
+import { ChakraProvider } from '@chakra-ui/react';
+import theme from './styles/theme';
 
 axios.defaults.baseURL = 'https://api.dave-jordan.dev';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ChakraProvider theme={theme}>
+      <App />
+    </ChakraProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
