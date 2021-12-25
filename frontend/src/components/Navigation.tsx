@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useAuthContext } from '../context/AuthContext';
@@ -29,6 +28,9 @@ const Navigation = (props: Props) => {
         </li>
         <li>
           <Link to='/dashboard'>Dashboard</Link>
+        </li>
+        <li>
+          <Link to='/giraffe-tools'>Giraffe Tools</Link>
         </li>
         <li>
           <a href='#!' onClick={signOut}>

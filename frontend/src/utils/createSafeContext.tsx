@@ -1,7 +1,7 @@
 import React from 'react';
 
-const createSafeContext = <ContextType,>() => {
-  const context = React.createContext<ContextType | undefined>(undefined);
+const createSafeContext = <ContextValue,>() => {
+  const context = React.createContext<ContextValue | undefined>(undefined);
 
   const useSafeContext = () => {
     const contextValue = React.useContext(context);
