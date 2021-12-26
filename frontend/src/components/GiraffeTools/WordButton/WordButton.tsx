@@ -1,24 +1,22 @@
 import { Button } from '@chakra-ui/react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import {
-  controlStateAtom,
-  buttonAtomFamily,
-  sectionAtomFamily
+  wordButtonAtomFamily,
+  sectionAtomFamily,
+  isButtonDisplayedSelector
 } from '../GiraffeState';
 
 interface Props {
-  buttonId: string;
+  wordButtonId: string;
   sectionId: string;
 }
 
-const WordButton: React.FC<Props> = ({ buttonId, sectionId }) => {
+const WordButton: React.FC<Props> = ({ wordButtonId, sectionId }) => {
   const [{ word, status }, setButtonState] = useRecoilState(
-    buttonAtomFamily(buttonId)
+    wordButtonAtomFamily(wordButtonId)
   );
-
-  const { hideUnselected } = useRecoilValue(controlStateAtom);
-
   const { modes } = useRecoilValue(sectionAtomFamily(sectionId));
+  const isDisplayed = useRecoilValue(isButtonDisplayedSelector(wordButtonId));
 
   const onClick = () => {
     setButtonState({
@@ -27,7 +25,7 @@ const WordButton: React.FC<Props> = ({ buttonId, sectionId }) => {
     });
   };
 
-  return !(hideUnselected && status === 'unselected') ? (
+  return isDisplayed ? (
     <Button variant={status} onClick={onClick}>
       {word}
     </Button>

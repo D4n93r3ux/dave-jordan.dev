@@ -5,10 +5,6 @@ type AppState = {
   sectionIds: string[];
 };
 
-type ControlState = {
-  hideUnselected: boolean;
-};
-
 type SectionState = {
   sectionDisplayName: string;
   visible: boolean;
@@ -17,27 +13,25 @@ type SectionState = {
 };
 
 type CardState = {
-  buttonIds: string[];
+  wordButtonIds: string[];
 };
 
-type ButtonState = {
+type WordButtonState = {
   word: string;
   status: string;
 };
 
-export const appStateAtom = atom<AppState>({
-  key: 'appState',
+export const appAtom = atom<AppState>({
+  key: 'app',
   default: {
     user: '',
     sectionIds: []
   }
 });
 
-export const controlStateAtom = atom<ControlState>({
-  key: 'controlState',
-  default: {
-    hideUnselected: false
-  }
+export const viewAtom = atom<string>({
+  key: 'controls',
+  default: 'all'
 });
 
 export const sectionAtomFamily = atomFamily<SectionState, string>({
@@ -53,8 +47,23 @@ export const sectionAtomFamily = atomFamily<SectionState, string>({
 export const cardAtomFamily = atomFamily<CardState, string>({
   key: 'cards',
   default: {
-    buttonIds: []
+    wordButtonIds: []
   }
+});
+
+export const isButtonDisplayedSelector = selectorFamily<boolean, string>({
+  key: 'isButtonDisplayed',
+  get:
+    wordButtonId =>
+    ({ get }) => {
+      const { status } = get(wordButtonAtomFamily(wordButtonId));
+      const view = get(viewAtom);
+      return (
+        view === status ||
+        view === 'all' ||
+        (view === 'selected' && status !== 'unselected')
+      );
+    }
 });
 
 export const hideCardSelector = selectorFamily<
@@ -63,23 +72,33 @@ export const hideCardSelector = selectorFamily<
 >({
   key: 'hideCard',
   get:
-    ({ cardId, sectionId }) =>
+    ({ cardId }) =>
     ({ get }) => {
-      const { buttonIds } = get(cardAtomFamily(cardId));
-      const { hideUnselected } = get(controlStateAtom);
-      const buttonStatuses = buttonIds.map(
-        buttonId => get(buttonAtomFamily(buttonId)).status
+      const { wordButtonIds } = get(cardAtomFamily(cardId));
+      const buttonsDisplayed = wordButtonIds.map(buttonId =>
+        get(isButtonDisplayedSelector(buttonId))
       );
 
-      return (
-        buttonStatuses.every(status => status === 'unselected') &&
-        hideUnselected
-      );
+      return buttonsDisplayed.every(isDisplayed => !isDisplayed);
     }
 });
 
-export const buttonAtomFamily = atomFamily<ButtonState, string>({
-  key: 'buttons',
+export const hideSectionSelector = selectorFamily<boolean, string>({
+  key: 'hideSection',
+  get:
+    sectionId =>
+    ({ get }) => {
+      const { cardIds } = get(sectionAtomFamily(sectionId));
+      const cardsHidden = cardIds.map(cardId =>
+        get(hideCardSelector({ sectionId, cardId }))
+      );
+
+      return cardsHidden.every(isHidden => isHidden);
+    }
+});
+
+export const wordButtonAtomFamily = atomFamily<WordButtonState, string>({
+  key: 'wordButtons',
   default: {
     word: '',
     status: 'unselected'

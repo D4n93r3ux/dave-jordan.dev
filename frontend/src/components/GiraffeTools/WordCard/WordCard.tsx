@@ -10,22 +10,25 @@ interface Props {
 }
 
 const WordCard: React.FC<Props> = ({ cardId, sectionId, modes }) => {
-  const { buttonIds } = useRecoilValue(cardAtomFamily(cardId));
+  const { wordButtonIds } = useRecoilValue(cardAtomFamily(cardId));
 
   const hideCard = useRecoilValue(hideCardSelector({ cardId, sectionId }));
 
-  const styles = useStyleConfig('WordCard', { variant: sectionId });
+  const cardStyles = useStyleConfig('WordCard', { variant: sectionId });
+  const cardHeadingStyles = useStyleConfig('CardHeading', {
+    variant: sectionId
+  });
 
   // Get hideUnselected from state
 
   return !hideCard ? (
-    <Flex __css={styles} variant={sectionId}>
-      <Heading variant={`${sectionId}Card`} size='md'>
+    <Flex __css={cardStyles} variant={sectionId}>
+      <Heading sx={cardHeadingStyles} size='xl'>
         {cardId}
       </Heading>
-      <Flex flexWrap='wrap' gap='15px' justify='center'>
-        {buttonIds.map(buttonId => (
-          <WordButton buttonId={buttonId} sectionId={sectionId} />
+      <Flex flexWrap='wrap' gap='10px' justify='center'>
+        {wordButtonIds.map(wordButtonId => (
+          <WordButton wordButtonId={wordButtonId} sectionId={sectionId} />
         ))}
       </Flex>
     </Flex>

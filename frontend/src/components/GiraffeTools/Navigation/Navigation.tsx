@@ -5,7 +5,7 @@ interface Props {}
 
 const Navigation = (props: Props) => {
   return (
-    <Flex bg='magenta' gap='10px' p='10px'>
+    <Flex gap='10px' p='10px'>
       <Link as={RouterLink} to='/'>
         Home
       </Link>

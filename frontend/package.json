@@ -7,6 +7,7 @@
     "@chakra-ui/react": "^1.7.3",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@fontsource/caveat": "^4.5.0",
     "@fontsource/roboto-mono": "^4.5.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -29,7 +30,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && cp _redirects build/_redirects",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
@@ -49,7 +50,11 @@
           "import/no-anonymous-default-export": "off"
         }
       }
-    ]
+    ],
+    "rules": {
+      "array-callback-return": "off",
+      "react-hooks/exhaustive-deps": "off"
+    }
   },
   "browserslist": {
     "production": [

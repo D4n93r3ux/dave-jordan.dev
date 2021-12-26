@@ -3,8 +3,9 @@ import { StyleConfig } from '@chakra-ui/theme-tools';
 const Button: StyleConfig = {
   baseStyle: {
     fontFamily: 'Roboto Mono',
-    fontWeight: '600',
+    fontWeight: '400',
     borderRadius: 'xl',
+    bg: 'white',
     _focus: {
       shadow: 'none'
     }
@@ -20,10 +21,25 @@ const Button: StyleConfig = {
       }
     },
     met: {
-      bg: 'green.300'
+      outline: '3px solid',
+      outlineColor: 'green.300'
     },
     unmet: {
-      bg: 'red.300'
+      outline: '3px solid',
+      outlineColor: 'red.300'
+    },
+    control: {
+      bg: 'yellow.100',
+      border: '2px solid',
+      borderRadius: 'xl',
+      borderColor: 'yellow.400',
+      fontWeight: '600',
+      _hover: {
+        bg: 'yellow.200'
+      },
+      _active: {
+        bg: 'yellow.100'
+      }
     }
   },
   defaultProps: {

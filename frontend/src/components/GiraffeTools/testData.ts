@@ -30,8 +30,8 @@ const createSection = ({
 
 const testData = {
   user: 'testUser',
-  hideUnselected: false,
-  sections: [
+  view: 'all',
+  sectionData: [
     createSection({
       sectionId: 'feelingsMetNeeds',
       sectionDisplayName: 'Feelings: Met Needs',

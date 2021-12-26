@@ -5,51 +5,49 @@ import testData from '../testData';
 import { useRecoilValue, useRecoilCallback } from 'recoil';
 import { useEffect } from 'react';
 import {
-  appStateAtom,
-  controlStateAtom,
+  appAtom,
+  viewAtom,
   sectionAtomFamily,
   cardAtomFamily,
-  buttonAtomFamily
+  wordButtonAtomFamily
 } from '../GiraffeState';
 
-interface Props {}
-
-const WordTool = (props: Props) => {
-  const appState = useRecoilValue(appStateAtom);
+const GiraffeApp = () => {
+  const appState = useRecoilValue(appAtom);
 
   const hydrateState = useRecoilCallback(
     ({ set }) =>
-      ({ user, hideUnselected, sections }: typeof testData) => {
-        set(appStateAtom, {
+      ({ user, view, sectionData }: typeof testData) => {
+        // Set app state
+        set(appAtom, {
           user,
-          sectionIds: sections.map(section => section.sectionId)
+          sectionIds: sectionData.map(({ sectionId }) => sectionId)
         });
-        set(controlStateAtom, {
-          hideUnselected
-        });
+        // Set view state
+        set(viewAtom, view);
 
-        sections.map(
+        sectionData.map(
           ({ sectionId, sectionDisplayName, visible, modes, cardData }) => {
+            // Set section state
             set(sectionAtomFamily(sectionId), {
               sectionDisplayName,
               visible,
               modes,
-              cardIds: cardData.map(cardDatum => cardDatum.cardId)
+              cardIds: cardData.map(({ cardId }) => cardId)
             });
-            cardData.map(({ cardId, visible, wordData }) => {
+            // Set card state
+            cardData.map(({ cardId, wordData }) => {
               set(cardAtomFamily(cardId), {
-                buttonIds: wordData.map(({ word }) => word)
+                wordButtonIds: wordData.map(({ word }) => `${cardId}-${word}`)
               });
+              // Set wordButton state
               wordData.map(({ word, status }) => {
-                set(buttonAtomFamily(word), {
+                set(wordButtonAtomFamily(`${cardId}-${word}`), {
                   word,
                   status
                 });
-                return true;
               });
-              return true;
             });
-            return true;
           }
         );
       }
@@ -57,17 +55,18 @@ const WordTool = (props: Props) => {
 
   useEffect(() => {
     hydrateState(testData);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <Flex flexDirection='column'>
-      {appState.sectionIds.map(id => (
-        <WordSection sectionId={id} />
-      ))}
+    <>
+      <Flex flexDirection='column' marginBottom='30px'>
+        {appState.sectionIds.map(id => (
+          <WordSection sectionId={id} />
+        ))}
+      </Flex>
       <Controls />
-    </Flex>
+    </>
   );
 };
 
-export default WordTool;
+export default GiraffeApp;

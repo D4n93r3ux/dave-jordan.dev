@@ -1,12 +1,12 @@
 import { Routes, Route, Outlet } from 'react-router-dom';
 import Navigation from './Navigation';
 import About from './About';
-import WordTool from './WordTool';
+import WordTool from './GiraffeApp';
 import { Box } from '@chakra-ui/react';
 
 interface Props {}
 
-const GiraffeToolsRoutes = (props: Props) => {
+const GiraffeAppRoutes = (props: Props) => {
   return (
     <Routes>
       <Route
@@ -19,10 +19,10 @@ const GiraffeToolsRoutes = (props: Props) => {
         }
       >
         <Route path='' element={<About />} />
-        <Route path='word-tool' element={<WordTool />} />
       </Route>
+      <Route path='/giraffe-tools/word-tool' element={<WordTool />} />
     </Routes>
   );
 };
 
-export default GiraffeToolsRoutes;
+export default GiraffeAppRoutes;

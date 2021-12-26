@@ -11,9 +11,9 @@ const Template: ComponentStory<typeof WordCard> = args => (
   <WordCard {...args} />
 );
 
-const feelingsMetNeeds = testData.sections[0];
-const feelingsUnmetNeeds = testData.sections[1];
-const needs = testData.sections[2];
+const feelingsMetNeeds = testData.sectionData[0];
+const feelingsUnmetNeeds = testData.sectionData[1];
+const needs = testData.sectionData[2];
 
 // export const FeelingsMetNeeds = Template.bind({});
 // {

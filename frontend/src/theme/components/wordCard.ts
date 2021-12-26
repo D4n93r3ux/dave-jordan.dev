@@ -4,18 +4,20 @@ const WordCard: StyleConfig = {
   baseStyle: {
     display: 'flex',
     flexDirection: 'column',
-    p: '15px',
+    p: '10px',
     borderRadius: '2xl',
-    gap: '15px',
+    gap: '10px',
     shadow: 'lg',
+    w: '100%',
     minWidth: '320px',
+    maxWidth: '640px',
     flexBasis: '30%',
     flexGrow: '1',
     border: '2px solid'
   },
   variants: {
     feelingsMetNeeds: {
-      borderColor: 'green.100',
+      borderColor: 'green.200',
       bg: 'green.50'
     },
     feelingsUnmetNeeds: {

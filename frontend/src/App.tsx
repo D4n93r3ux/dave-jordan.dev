@@ -1,11 +1,13 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import theme from './theme';
-import '@fontsource/roboto-mono/200.css';
+import '@fontsource/roboto-mono/400.css';
+import '@fontsource/roboto-mono/600.css';
+import '@fontsource/caveat/700.css';
 import { RecoilRoot } from 'recoil';
 import AuthContext from './context/AuthContext';
 import { BrowserRouter as Router } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
-import GiraffeToolsRoutes from './components/GiraffeTools/GiraffeToolsRoutes';
+import GiraffeAppRoutes from './components/GiraffeTools/GiraffeAppRoutes';
 
 function App() {
   return (
@@ -14,7 +16,7 @@ function App() {
         <AuthContext>
           <Router>
             <AppRoutes />
-            <GiraffeToolsRoutes />
+            <GiraffeAppRoutes />
           </Router>
         </AuthContext>
       </ChakraProvider>
