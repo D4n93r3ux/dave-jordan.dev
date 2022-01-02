@@ -3,8 +3,9 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import {
   wordButtonAtomFamily,
   sectionAtomFamily,
-  isButtonDisplayedSelector
-} from '../GiraffeState';
+  isButtonDisplayedSelector,
+  viewAtom
+} from '../../state';
 
 interface Props {
   wordButtonId: string;
@@ -17,12 +18,20 @@ const WordButton: React.FC<Props> = ({ wordButtonId, sectionId }) => {
   );
   const { modes } = useRecoilValue(sectionAtomFamily(sectionId));
   const isDisplayed = useRecoilValue(isButtonDisplayedSelector(wordButtonId));
+  const view = useRecoilValue(viewAtom);
 
   const onClick = () => {
-    setButtonState({
-      word,
-      status: modes[(modes.indexOf(status) + 1) % modes.length]
-    });
+    if (view !== 'all') {
+      setButtonState({
+        word,
+        status: 'unselected'
+      });
+    } else {
+      setButtonState({
+        word,
+        status: modes[(modes.indexOf(status) + 1) % modes.length]
+      });
+    }
   };
 
   return isDisplayed ? (

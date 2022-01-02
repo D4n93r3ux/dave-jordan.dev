@@ -1,7 +1,7 @@
 import WordSection from '../WordSection';
 import Controls from '../Controls';
 import { Flex } from '@chakra-ui/react';
-import testData from '../testData';
+import testData from '../../testData';
 import { useRecoilValue, useRecoilCallback } from 'recoil';
 import { useEffect } from 'react';
 import {
@@ -10,9 +10,9 @@ import {
   sectionAtomFamily,
   cardAtomFamily,
   wordButtonAtomFamily
-} from '../GiraffeState';
+} from '../../state';
 
-const GiraffeApp = () => {
+const WordTool = () => {
   const appState = useRecoilValue(appAtom);
 
   const hydrateState = useRecoilCallback(
@@ -61,7 +61,7 @@ const GiraffeApp = () => {
     <>
       <Flex flexDirection='column' marginBottom='30px'>
         {appState.sectionIds.map(id => (
-          <WordSection sectionId={id} />
+          <WordSection sectionId={id} sectionAtomFamily={sectionAtomFamily} />
         ))}
       </Flex>
       <Controls />
@@ -69,4 +69,4 @@ const GiraffeApp = () => {
   );
 };
 
-export default GiraffeApp;
+export default WordTool;

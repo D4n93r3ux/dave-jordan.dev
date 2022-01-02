@@ -1,6 +1,6 @@
 import WordSection from './WordSection';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import testData from '../testData';
+import testData from '../../testData';
 
 export default {
   title: 'Organisms/WordSection',

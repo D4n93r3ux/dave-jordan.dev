@@ -1,12 +1,12 @@
 import { Routes, Route, Outlet } from 'react-router-dom';
-import Navigation from './Navigation';
-import About from './About';
-import WordTool from './GiraffeApp';
+import Navigation from './components/Navigation';
+import About from './components/About';
+import WordTool from './components/WordTool';
 import { Box } from '@chakra-ui/react';
 
 interface Props {}
 
-const GiraffeAppRoutes = (props: Props) => {
+const GiraffeToolsRoutes = (props: Props) => {
   return (
     <Routes>
       <Route
@@ -25,4 +25,4 @@ const GiraffeAppRoutes = (props: Props) => {
   );
 };
 
-export default GiraffeAppRoutes;
+export default GiraffeToolsRoutes;

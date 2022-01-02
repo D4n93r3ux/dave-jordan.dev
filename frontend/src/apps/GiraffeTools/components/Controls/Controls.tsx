@@ -1,9 +1,11 @@
 import { Flex, Button } from '@chakra-ui/react';
 import { useRecoilState } from 'recoil';
-import { viewAtom } from '../GiraffeState';
+import { viewAtom } from '../../state';
+import { useResetApp } from '../../hooks';
 
 const Controls = () => {
   const [view, setView] = useRecoilState(viewAtom);
+  const resetButtons = useResetApp();
 
   const viewOptions = ['all', 'selected', 'met', 'unmet'];
 
@@ -30,7 +32,7 @@ const Controls = () => {
       <Button variant='control' size='xs' onClick={cycleView}>
         View: {view}
       </Button>
-      <Button variant='control' size='xs'>
+      <Button variant='control' size='xs' onClick={resetButtons}>
         Reset
       </Button>
     </Flex>

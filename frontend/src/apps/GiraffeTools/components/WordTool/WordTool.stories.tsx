@@ -1,10 +1,10 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import GiraffeApp from './GiraffeApp';
+import WordTool from './WordTool';
 
 export default {
   title: 'GiraffeTools/Pages/WordTool',
-  component: GiraffeApp
-} as ComponentMeta<typeof GiraffeApp>;
+  component: WordTool
+} as ComponentMeta<typeof WordTool>;
 
 // const Template: ComponentStory<typeof GiraffeApp> = args => (
 //   <GiraffeApp {...args} />

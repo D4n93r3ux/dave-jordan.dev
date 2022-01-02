@@ -1,25 +1,30 @@
 import { Heading, Flex, useStyleConfig } from '@chakra-ui/react';
 import WordCard from '../WordCard';
 import { useRecoilValue } from 'recoil';
-import { sectionAtomFamily, hideSectionSelector } from '../GiraffeState';
+import type { RecoilState } from 'recoil';
+import { isSectionDisplayedSelector } from '../../state';
+import type { SectionState } from '../../state';
 
 interface Props {
   sectionId: string;
+  sectionAtomFamily: (param: string) => RecoilState<SectionState>;
 }
 
-const WordSection = ({ sectionId }: Props) => {
+const WordSection = ({ sectionId, sectionAtomFamily }: Props) => {
   const { sectionDisplayName, modes, cardIds } = useRecoilValue(
     sectionAtomFamily(sectionId)
   );
 
-  const isSectionHidden = useRecoilValue(hideSectionSelector(sectionId));
+  const isSectionDisplayed = useRecoilValue(
+    isSectionDisplayedSelector(sectionId)
+  );
 
   const sectionStyles = useStyleConfig('WordSection');
   const sectionHeadingStyles = useStyleConfig('SectionHeading', {
     variant: sectionId
   });
 
-  return !isSectionHidden ? (
+  return isSectionDisplayed ? (
     <Flex __css={sectionStyles}>
       <Heading sx={sectionHeadingStyles} size='2xl'>
         {sectionDisplayName}

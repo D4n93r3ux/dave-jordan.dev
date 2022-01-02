@@ -7,7 +7,7 @@ import { RecoilRoot } from 'recoil';
 import AuthContext from './context/AuthContext';
 import { BrowserRouter as Router } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
-import GiraffeAppRoutes from './components/GiraffeTools/GiraffeAppRoutes';
+import GiraffeToolsRoutes from './apps/GiraffeTools';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <AuthContext>
           <Router>
             <AppRoutes />
-            <GiraffeAppRoutes />
+            <GiraffeToolsRoutes />
           </Router>
         </AuthContext>
       </ChakraProvider>

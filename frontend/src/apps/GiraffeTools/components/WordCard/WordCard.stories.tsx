@@ -1,6 +1,6 @@
 import WordCard from './WordCard';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import testData from '../testData';
+import testData from '../../testData';
 
 export default {
   title: 'GiraffeTools/Molecules/WordCard',

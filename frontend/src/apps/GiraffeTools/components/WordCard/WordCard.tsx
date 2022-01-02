@@ -1,7 +1,7 @@
 import { Heading, Flex, useStyleConfig } from '@chakra-ui/react';
 import WordButton from '../WordButton';
 import { useRecoilValue } from 'recoil';
-import { cardAtomFamily, hideCardSelector } from '../GiraffeState';
+import { cardAtomFamily, isCardDisplayedSelector } from '../../state';
 
 interface Props {
   cardId: string;
@@ -12,16 +12,16 @@ interface Props {
 const WordCard: React.FC<Props> = ({ cardId, sectionId, modes }) => {
   const { wordButtonIds } = useRecoilValue(cardAtomFamily(cardId));
 
-  const hideCard = useRecoilValue(hideCardSelector({ cardId, sectionId }));
+  const isCardDisplayed = useRecoilValue(
+    isCardDisplayedSelector({ cardId, sectionId })
+  );
 
   const cardStyles = useStyleConfig('WordCard', { variant: sectionId });
   const cardHeadingStyles = useStyleConfig('CardHeading', {
     variant: sectionId
   });
 
-  // Get hideUnselected from state
-
-  return !hideCard ? (
+  return isCardDisplayed ? (
     <Flex __css={cardStyles} variant={sectionId}>
       <Heading sx={cardHeadingStyles} size='xl'>
         {cardId}
