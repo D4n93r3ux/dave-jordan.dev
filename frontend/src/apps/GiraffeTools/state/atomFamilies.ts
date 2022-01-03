@@ -2,7 +2,6 @@ import { atomFamily } from 'recoil';
 
 export type SectionState = {
   sectionDisplayName: string;
-  visible: boolean;
   modes: string[];
   cardIds: string[];
 };
@@ -20,7 +19,6 @@ export const sectionAtomFamily = atomFamily<SectionState, string>({
   key: 'sections',
   default: {
     sectionDisplayName: '',
-    visible: true,
     modes: [],
     cardIds: []
   }

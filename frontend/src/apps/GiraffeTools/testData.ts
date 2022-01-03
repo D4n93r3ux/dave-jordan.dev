@@ -20,11 +20,9 @@ const createSection = ({
     cardData: rawCardData.map(({ cardId, words }) => {
       return {
         cardId,
-        wordData: words.map(word => ({ word, status: 'unselected' })),
-        visible: true
+        wordData: words.map(word => ({ word, status: 'unselected' }))
       };
-    }),
-    visible: true
+    })
   };
 };
 

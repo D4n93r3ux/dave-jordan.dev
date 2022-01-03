@@ -1,16 +1,13 @@
 import { Heading, Flex, useStyleConfig } from '@chakra-ui/react';
 import WordCard from '../WordCard';
 import { useRecoilValue } from 'recoil';
-import type { RecoilState } from 'recoil';
-import { isSectionDisplayedSelector } from '../../state';
-import type { SectionState } from '../../state';
+import { sectionAtomFamily, isSectionDisplayedSelector } from '../../state';
 
 interface Props {
   sectionId: string;
-  sectionAtomFamily: (param: string) => RecoilState<SectionState>;
 }
 
-const WordSection = ({ sectionId, sectionAtomFamily }: Props) => {
+const WordSection = ({ sectionId }: Props) => {
   const { sectionDisplayName, modes, cardIds } = useRecoilValue(
     sectionAtomFamily(sectionId)
   );
