@@ -1,60 +1,67 @@
-import WordSection from './WordSection';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import testData from '../../testData';
+import WordSectionComponent from './WordSection';
+import type { ComponentMeta } from '@storybook/react';
+import { Flex } from '@chakra-ui/react';
 
 export default {
-  title: 'Organisms/WordSection',
-  component: WordSection
-} as ComponentMeta<typeof WordSection>;
+  title: 'Giraffe Tools/Organisms/Word Section',
+  component: WordSectionComponent
+} as ComponentMeta<typeof WordSectionComponent>;
 
-const Template: ComponentStory<typeof WordSection> = args => (
-  <WordSection {...args} />
+const basicProps = {
+  sectionIndex: 0,
+  view: 'all',
+  setButtonStatus: null
+};
+
+export const WordSection = () => (
+  <Flex flexDir='column' gap='10px'>
+    <WordSectionComponent
+      {...basicProps}
+      sectionType='feelingsMetNeeds'
+      sectionDisplayName='Feelings: Met Needs'
+      modes={['unselected', 'met']}
+      cardData={[
+        {
+          cardDisplayName: 'Affectionate',
+          wordButtonData: Array(5).fill({ word: 'word', status: 'unselected' })
+        },
+        {
+          cardDisplayName: 'Engaged',
+          wordButtonData: Array(5).fill({ word: 'word', status: 'unselected' })
+        }
+      ]}
+    />
+    <WordSectionComponent
+      {...basicProps}
+      sectionType='feelingsUnmetNeeds'
+      sectionDisplayName='Feelings: Unmet Needs'
+      modes={['unselected', 'unmet']}
+      cardData={[
+        {
+          cardDisplayName: 'Afraid',
+          wordButtonData: Array(5).fill({ word: 'word', status: 'unselected' })
+        },
+        {
+          cardDisplayName: 'Annoyed',
+          wordButtonData: Array(5).fill({ word: 'word', status: 'unselected' })
+        }
+      ]}
+    />
+    <WordSectionComponent
+      {...basicProps}
+      sectionType='needs'
+      sectionDisplayName='Needs'
+      modes={['unselected', 'met', 'unmet']}
+      cardData={[
+        {
+          cardDisplayName: 'Connection',
+          wordButtonData: Array(5).fill({ word: 'word', status: 'unselected' })
+        },
+        {
+          cardDisplayName: 'Physical Well-Being',
+          wordButtonData: Array(5).fill({ word: 'word', status: 'unselected' })
+        }
+      ]}
+    />
+  </Flex>
 );
-
-// export const FeelingsMetNeeds = Template.bind({});
-// {
-//   const {
-//     sectionType,
-//     sectionDisplayName,
-//     cardData: categories,
-//     modes
-//   } = testData.sections[0];
-//   FeelingsMetNeeds.args = {
-//     sectionType,
-//     sectionDisplayName,
-//     categories,
-//     modes
-//   };
-// }
-
-// export const FeelingsUnmetNeeds = Template.bind({});
-// {
-//   const {
-//     sectionType,
-//     sectionDisplayName,
-//     cardData: categories,
-//     modes
-//   } = testData.sections[1];
-//   FeelingsUnmetNeeds.args = {
-//     sectionType,
-//     sectionDisplayName,
-//     categories,
-//     modes
-//   };
-// }
-
-// export const Needs = Template.bind({});
-// {
-//   const {
-//     sectionType,
-//     sectionDisplayName,
-//     cardData: categories,
-//     modes
-//   } = testData.sections[2];
-//   Needs.args = {
-//     sectionType,
-//     sectionDisplayName,
-//     categories,
-//     modes
-//   };
-// }

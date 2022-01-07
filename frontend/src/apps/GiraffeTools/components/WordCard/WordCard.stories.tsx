@@ -1,49 +1,45 @@
-import WordCard from './WordCard';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import testData from '../../testData';
+import WordCardComponent from './WordCard';
+import type { ComponentMeta } from '@storybook/react';
+import { Flex } from '@chakra-ui/react';
 
 export default {
-  title: 'GiraffeTools/Molecules/WordCard',
-  component: WordCard
-} as ComponentMeta<typeof WordCard>;
+  title: 'Giraffe Tools/Molecules/Word Card',
+  component: WordCardComponent
+} as ComponentMeta<typeof WordCardComponent>;
 
-const Template: ComponentStory<typeof WordCard> = args => (
-  <WordCard {...args} />
+const basicProps = {
+  sectionIndex: 0,
+  cardIndex: 0,
+  wordButtonData: [
+    { word: 'word', status: 'unselected' },
+    { word: 'word', status: 'unselected' },
+    { word: 'word', status: 'unselected' },
+    { word: 'word', status: 'unselected' },
+    { word: 'word', status: 'unselected' }
+  ],
+  view: 'all',
+  setButtonStatus: null
+};
+
+export const WordCard = () => (
+  <Flex flexDir='column' gap='10px'>
+    <WordCardComponent
+      {...basicProps}
+      sectionType='feelingsMetNeeds'
+      cardDisplayName='Affection'
+      modes={['unselected', 'met']}
+    />
+    <WordCardComponent
+      {...basicProps}
+      sectionType='feelingsUnmetNeeds'
+      cardDisplayName='Anger'
+      modes={['unselected', 'unmet']}
+    />
+    <WordCardComponent
+      {...basicProps}
+      sectionType='needs'
+      cardDisplayName='Connection'
+      modes={['unselected', 'met', 'unmet']}
+    />
+  </Flex>
 );
-
-const feelingsMetNeeds = testData.sectionData[0];
-const feelingsUnmetNeeds = testData.sectionData[1];
-const needs = testData.sectionData[2];
-
-// export const FeelingsMetNeeds = Template.bind({});
-// {
-//   const { cardId: category, wordData } = feelingsMetNeeds.cardData[0];
-//   FeelingsMetNeeds.args = {
-//     category,
-//     wordData,
-//     modes: ['unselected', 'met'],
-//     sectionType: 'feelingsMetNeeds'
-//   };
-// }
-
-// export const FeelingsUnmetNeeds = Template.bind({});
-// {
-//   const { cardId: category, wordData } = feelingsUnmetNeeds.cardData[0];
-//   FeelingsUnmetNeeds.args = {
-//     category,
-//     wordData,
-//     modes: ['unselected', 'unmet'],
-//     sectionType: 'feelingsUnmetNeeds'
-//   };
-// }
-
-// export const Needs = Template.bind({});
-// {
-//   const { cardId: category, wordData } = needs.cardData[0];
-//   Needs.args = {
-//     category,
-//     wordData,
-//     modes: ['unselected', 'met', 'unmet'],
-//     sectionType: 'needs'
-//   };
-// }

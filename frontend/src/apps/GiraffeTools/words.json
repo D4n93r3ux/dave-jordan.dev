@@ -2,7 +2,7 @@
   "feelings": {
     "metNeeds": [
       {
-        "cardId": "Affectionate",
+        "cardDisplayName": "Affectionate",
         "words": [
           "compassionate",
           "friendly",
@@ -14,7 +14,7 @@
         ]
       },
       {
-        "cardId": "Engaged",
+        "cardDisplayName": "Engaged",
         "words": [
           "absorbed",
           "alert",
@@ -31,11 +31,11 @@
         ]
       },
       {
-        "cardId": "Confident",
+        "cardDisplayName": "Confident",
         "words": ["empowered", "open", "proud", "safe", "secure"]
       },
       {
-        "cardId": "Excited",
+        "cardDisplayName": "Excited",
         "words": [
           "amazed",
           "animated",
@@ -55,7 +55,7 @@
         ]
       },
       {
-        "cardId": "Grateful",
+        "cardDisplayName": "Grateful",
         "words": [
           "appreciative",
           "moved",
@@ -68,7 +68,7 @@
         ]
       },
       {
-        "cardId": "Joyful",
+        "cardDisplayName": "Joyful",
         "words": [
           "amused",
           "delighted",
@@ -80,7 +80,7 @@
         ]
       },
       {
-        "cardId": "Exhilarated",
+        "cardDisplayName": "Exhilarated",
         "words": [
           "blissful",
           "ecstatic",
@@ -93,7 +93,7 @@
         ]
       },
       {
-        "cardId": "Peaceful",
+        "cardDisplayName": "Peaceful",
         "words": [
           "calm",
           "clear headed",
@@ -114,11 +114,11 @@
         ]
       },
       {
-        "cardId": "Hopeful",
+        "cardDisplayName": "Hopeful",
         "words": ["expectant", "encouraged", "optimistic"]
       },
       {
-        "cardId": "Refreshed",
+        "cardDisplayName": "Refreshed",
         "words": [
           "enlivened",
           "rejuvenated",
@@ -131,7 +131,7 @@
     ],
     "unmetNeeds": [
       {
-        "cardId": "Afraid",
+        "cardDisplayName": "Afraid",
         "words": [
           "apprehensive",
           "dread",
@@ -148,7 +148,7 @@
         ]
       },
       {
-        "cardId": "Annoyed",
+        "cardDisplayName": "Annoyed",
         "words": [
           "aggravated",
           "dismayed",
@@ -162,7 +162,7 @@
         ]
       },
       {
-        "cardId": "Angry",
+        "cardDisplayName": "Angry",
         "words": [
           "enraged",
           "furious",
@@ -175,7 +175,7 @@
         ]
       },
       {
-        "cardId": "Aversion",
+        "cardDisplayName": "Aversion",
         "words": [
           "animosity",
           "appalled",
@@ -189,7 +189,7 @@
         ]
       },
       {
-        "cardId": "Confused",
+        "cardDisplayName": "Confused",
         "words": [
           "ambivalent",
           "baffled",
@@ -204,7 +204,7 @@
         ]
       },
       {
-        "cardId": "Disconnected",
+        "cardDisplayName": "Disconnected",
         "words": [
           "alienated",
           "aloof",
@@ -222,7 +222,7 @@
         ]
       },
       {
-        "cardId": "Disquiet",
+        "cardDisplayName": "Disquiet",
         "words": [
           "agitated",
           "alarmed",
@@ -246,7 +246,7 @@
         ]
       },
       {
-        "cardId": "Embarassed",
+        "cardDisplayName": "Embarassed",
         "words": [
           "ashamed",
           "chagrined",
@@ -257,7 +257,7 @@
         ]
       },
       {
-        "cardId": "Fatigue",
+        "cardDisplayName": "Fatigue",
         "words": [
           "beat",
           "burnt out",
@@ -272,7 +272,7 @@
         ]
       },
       {
-        "cardId": "Pain",
+        "cardDisplayName": "Pain",
         "words": [
           "agony",
           "anguished",
@@ -288,7 +288,7 @@
         ]
       },
       {
-        "cardId": "Sad",
+        "cardDisplayName": "Sad",
         "words": [
           "depressed",
           "dejected",
@@ -307,7 +307,7 @@
         ]
       },
       {
-        "cardId": "Tense",
+        "cardDisplayName": "Tense",
         "words": [
           "anxious",
           "cranky",
@@ -325,7 +325,7 @@
         ]
       },
       {
-        "cardId": "Vulnerable",
+        "cardDisplayName": "Vulnerable",
         "words": [
           "fragile",
           "guarded",
@@ -338,7 +338,7 @@
         ]
       },
       {
-        "cardId": "Yearning",
+        "cardDisplayName": "Yearning",
         "words": [
           "envious",
           "jealous",
@@ -352,7 +352,7 @@
   },
   "needs": [
     {
-      "cardId": "Connection",
+      "cardDisplayName": "Connection",
       "words": [
         "acceptance",
         "affection",
@@ -385,7 +385,7 @@
       ]
     },
     {
-      "cardId": "Physical Well-Being",
+      "cardDisplayName": "Physical Well-Being",
       "words": [
         "air",
         "food",
@@ -399,15 +399,15 @@
       ]
     },
     {
-      "cardId": "Honesty",
+      "cardDisplayName": "Honesty",
       "words": ["authenticity", "integrity", "presence"]
     },
     {
-      "cardId": "Play",
+      "cardDisplayName": "Play",
       "words": ["joy", "humour"]
     },
     {
-      "cardId": "Peace",
+      "cardDisplayName": "Peace",
       "words": [
         "beauty",
         "communion",
@@ -419,11 +419,11 @@
       ]
     },
     {
-      "cardId": "Autonomy",
+      "cardDisplayName": "Autonomy",
       "words": ["choice", "freedom", "independence", "space", "spontaneity"]
     },
     {
-      "cardId": "Meaning",
+      "cardDisplayName": "Meaning",
       "words": [
         "awareness",
         "celebration of life",

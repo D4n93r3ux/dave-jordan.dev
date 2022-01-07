@@ -1,19 +1,12 @@
 import { Flex, Button } from '@chakra-ui/react';
-import { useRecoilState } from 'recoil';
-import { viewAtom } from '../../state';
-import { useResetApp } from '../../hooks';
 
-const Controls = () => {
-  const [view, setView] = useRecoilState(viewAtom);
-  const resetButtons = useResetApp();
+interface Props {
+  view: string;
+  cycleView: () => void;
+  resetButtons: () => void;
+}
 
-  const viewOptions = ['all', 'selected', 'met', 'unmet'];
-
-  const cycleView = () => {
-    const nextViewIndex = (viewOptions.indexOf(view) + 1) % viewOptions.length;
-    setView(viewOptions[nextViewIndex]);
-  };
-
+const Controls = ({ view, cycleView, resetButtons }: Props) => {
   return (
     <Flex
       position='fixed'

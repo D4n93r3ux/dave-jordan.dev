@@ -1,37 +1,67 @@
 import { Heading, Flex, useStyleConfig } from '@chakra-ui/react';
+import { CardData, SetButtonStatusFunction } from '../../types';
 import WordCard from '../WordCard';
-import { useRecoilValue } from 'recoil';
-import { sectionAtomFamily, isSectionDisplayedSelector } from '../../state';
+import { shouldButtonRender } from '../../utils';
 
 interface Props {
-  sectionId: string;
+  sectionType: string;
+  sectionIndex: number;
+  sectionDisplayName: string;
+  modes: string[];
+  cardData: {
+    cardDisplayName: string;
+    wordButtonData: { word: string; status: string }[];
+  }[];
+  view: string;
+  setButtonStatus: SetButtonStatusFunction | null;
 }
 
-const WordSection = ({ sectionId }: Props) => {
-  const { sectionDisplayName, modes, cardIds } = useRecoilValue(
-    sectionAtomFamily(sectionId)
-  );
-
-  const isSectionDisplayed = useRecoilValue(
-    isSectionDisplayedSelector(sectionId)
-  );
-
+const WordSection = ({
+  sectionType,
+  sectionIndex,
+  sectionDisplayName,
+  modes,
+  cardData,
+  view,
+  setButtonStatus
+}: Props) => {
   const sectionStyles = useStyleConfig('WordSection');
   const sectionHeadingStyles = useStyleConfig('SectionHeading', {
-    variant: sectionId
+    variant: sectionType
   });
 
-  return isSectionDisplayed ? (
+  const cards = cardData.map((cardData, cardIndex) => {
+    const shouldCardRender = ({ wordButtonData }: CardData) => {
+      return wordButtonData.some(({ status }) =>
+        shouldButtonRender(view, status)
+      );
+    };
+
+    const { cardDisplayName, wordButtonData } = cardData;
+
+    return (
+      shouldCardRender(cardData) && (
+        <WordCard
+          sectionType={sectionType}
+          sectionIndex={sectionIndex}
+          cardIndex={cardIndex}
+          cardDisplayName={cardDisplayName}
+          wordButtonData={wordButtonData}
+          view={view}
+          modes={modes}
+          setButtonStatus={setButtonStatus}
+        />
+      )
+    );
+  });
+
+  return (
     <Flex __css={sectionStyles}>
       <Heading sx={sectionHeadingStyles} size='2xl'>
         {sectionDisplayName}
       </Heading>
-      {cardIds.map(cardId => (
-        <WordCard cardId={cardId} sectionId={sectionId} modes={modes} />
-      ))}
+      {cards}
     </Flex>
-  ) : (
-    <></>
   );
 };
 

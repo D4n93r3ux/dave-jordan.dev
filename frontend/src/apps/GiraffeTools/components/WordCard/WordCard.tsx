@@ -1,39 +1,65 @@
 import { Heading, Flex, useStyleConfig } from '@chakra-ui/react';
 import WordButton from '../WordButton';
-import { useRecoilValue } from 'recoil';
-import { cardAtomFamily, isCardDisplayedSelector } from '../../state';
+import type { SetButtonStatusFunction } from '../../types';
+import { shouldButtonRender } from '../../utils';
 
 interface Props {
-  cardId: string;
-  sectionId: string;
+  sectionType: string;
+  sectionIndex: number;
+  cardIndex: number;
+  cardDisplayName: string;
+  wordButtonData: { word: string; status: string }[];
+  view: string;
   modes: string[];
+  setButtonStatus: SetButtonStatusFunction | null;
 }
 
-const WordCard: React.FC<Props> = ({ cardId, sectionId, modes }) => {
-  const { wordButtonIds } = useRecoilValue(cardAtomFamily(cardId));
-
-  const isCardDisplayed = useRecoilValue(
-    isCardDisplayedSelector({ cardId, sectionId })
-  );
-
-  const cardStyles = useStyleConfig('WordCard', { variant: sectionId });
+const WordCard: React.FC<Props> = ({
+  sectionType,
+  sectionIndex,
+  cardIndex,
+  cardDisplayName,
+  wordButtonData,
+  view,
+  modes,
+  setButtonStatus
+}) => {
+  const cardStyles = useStyleConfig('WordCard', { variant: sectionType });
   const cardHeadingStyles = useStyleConfig('CardHeading', {
-    variant: sectionId
+    variant: sectionType
   });
 
-  return isCardDisplayed ? (
-    <Flex __css={cardStyles} variant={sectionId}>
+  const wordButtons = wordButtonData.map(
+    ({ word, status }, wordButtonIndex) => {
+      return (
+        shouldButtonRender(view, status) && (
+          <WordButton
+            key={wordButtonIndex}
+            sectionIndex={sectionIndex}
+            cardIndex={cardIndex}
+            wordButtonIndex={wordButtonIndex}
+            word={word}
+            status={status}
+            view={view}
+            modes={modes}
+            setButtonStatus={setButtonStatus}
+          />
+        )
+      );
+    }
+  );
+
+  if (cardIndex === 0 && sectionIndex === 0) console.log(wordButtons[0]);
+
+  return (
+    <Flex __css={cardStyles} variant={sectionIndex}>
       <Heading sx={cardHeadingStyles} size='xl'>
-        {cardId}
+        {cardDisplayName}
       </Heading>
       <Flex flexWrap='wrap' gap='10px' justify='center'>
-        {wordButtonIds.map(wordButtonId => (
-          <WordButton wordButtonId={wordButtonId} sectionId={sectionId} />
-        ))}
+        {wordButtons}
       </Flex>
     </Flex>
-  ) : (
-    <></>
   );
 };
 

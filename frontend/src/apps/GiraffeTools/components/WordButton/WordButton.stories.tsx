@@ -1,32 +1,31 @@
-import WordButton from './WordButton';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import WordButtonComponent from './WordButton';
+import type { ComponentMeta } from '@storybook/react';
+import { Flex } from '@chakra-ui/react';
 
 export default {
-  title: 'Atoms/WordButton',
-  component: WordButton
-} as ComponentMeta<typeof WordButton>;
+  title: 'Giraffe Tools/Atoms/Word Button',
+  component: WordButtonComponent
+} as ComponentMeta<typeof WordButtonComponent>;
 
-const Template: ComponentStory<typeof WordButton> = args => (
-  <WordButton {...args} />
+export const WordButton = () => (
+  <Flex gap='10px' p='10px' bg='gray.200'>
+    <WordButtonComponent
+      word='word'
+      status='unselected'
+      modes={['unselected', 'met', 'unmet']}
+      setButtonStatus={null}
+    />
+    <WordButtonComponent
+      word='word'
+      status='met'
+      modes={['unselected', 'met', 'unmet']}
+      setButtonStatus={null}
+    />
+    <WordButtonComponent
+      word='word'
+      status='unmet'
+      modes={['unselected', 'met', 'unmet']}
+      setButtonStatus={null}
+    />
+  </Flex>
 );
-
-// export const FeelingMetNeed = Template.bind({});
-// FeelingMetNeed.args = {
-//   variant: 'unselected',
-//   modes: ['unselected', 'met'],
-//   children: 'comfortable'
-// };
-
-// export const FeelingUnmetNeed = Template.bind({});
-// FeelingUnmetNeed.args = {
-//   variant: 'unselected',
-//   modes: ['unselected', 'unmet'],
-//   children: 'agitated'
-// };
-
-// export const Need = Template.bind({});
-// Need.args = {
-//   variant: 'unselected',
-//   modes: ['unselected', 'met', 'unmet'],
-//   children: 'affection'
-// };

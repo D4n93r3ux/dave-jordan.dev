@@ -1,14 +1,11 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import Controls from './Controls';
+import ControlsComponent from './Controls';
 
 export default {
-  title: 'GiraffeTools/Molecules/Controls',
-  component: Controls
-} as ComponentMeta<typeof Controls>;
+  title: 'Giraffe Tools/Molecules/Controls',
+  component: ControlsComponent
+} as ComponentMeta<typeof ControlsComponent>;
 
-// const Template: ComponentStory<typeof Controls> = args => (
-//   <Controls {...args} />
-// );
-
-// export const Default = Template.bind({});
-// Default.args = {};
+export const Controls: ComponentStory<typeof ControlsComponent> = args => (
+  <ControlsComponent view='all' cycleView={() => {}} resetButtons={() => {}} />
+);

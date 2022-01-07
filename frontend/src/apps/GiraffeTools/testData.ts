@@ -1,26 +1,26 @@
 import rawData from './words.json';
 
-type RawCardData = { cardId: string; words: string[] }[];
+type RawCardData = { cardDisplayName: string; words: string[] }[];
 
 const createSection = ({
-  sectionId,
+  sectionType,
   sectionDisplayName,
   modes,
   rawCardData
 }: {
-  sectionId: string;
+  sectionType: string;
   sectionDisplayName: string;
   modes: string[];
   rawCardData: RawCardData;
 }) => {
   return {
-    sectionId,
+    sectionType,
     sectionDisplayName,
     modes,
-    cardData: rawCardData.map(({ cardId, words }) => {
+    cardData: rawCardData.map(({ cardDisplayName, words }) => {
       return {
-        cardId,
-        wordData: words.map(word => ({ word, status: 'unselected' }))
+        cardDisplayName,
+        wordButtonData: words.map(word => ({ word, status: 'unselected' }))
       };
     })
   };
@@ -28,22 +28,21 @@ const createSection = ({
 
 const testData = {
   user: 'testUser',
-  view: 'all',
   sectionData: [
     createSection({
-      sectionId: 'feelingsMetNeeds',
+      sectionType: 'feelingsMetNeeds',
       sectionDisplayName: 'Feelings: Met Needs',
       modes: ['unselected', 'met'],
       rawCardData: rawData.feelings.metNeeds
     }),
     createSection({
-      sectionId: 'feelingsUnmetNeeds',
+      sectionType: 'feelingsUnmetNeeds',
       sectionDisplayName: 'Feelings: Unmet Needs',
       modes: ['unselected', 'unmet'],
       rawCardData: rawData.feelings.unmetNeeds
     }),
     createSection({
-      sectionId: 'needs',
+      sectionType: 'needs',
       sectionDisplayName: 'Needs',
       modes: ['unselected', 'met', 'unmet'],
       rawCardData: rawData.needs
