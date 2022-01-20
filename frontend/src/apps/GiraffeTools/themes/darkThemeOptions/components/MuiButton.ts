@@ -1,5 +1,8 @@
 import { Components } from '@mui/material/styles';
-import palette from '../palette';
+import createPalette from '@mui/material/styles/createPalette';
+import paletteOptions from '../palette';
+
+const palette = createPalette(paletteOptions);
 
 declare module '@mui/material/Button' {
   interface ButtonPropsVariantOverrides {
@@ -25,18 +28,18 @@ const MuiButton: Components['MuiButton'] = {
         fontFamily: 'Roboto Mono',
         fontWeight: '400',
         borderRadius: '10px',
-        backgroundColor: 'white',
+        backgroundColor: palette.unselected.dark,
         boxShadow:
           '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
         '&:hover': {
-          backgroundColor: 'white'
+          backgroundColor: palette.unselected.dark
         }
       }
     },
     {
       props: { variant: 'wordButton', color: 'unselected' },
       style: {
-        color: palette.unselected.dark
+        color: palette.unselected.heading
       }
     },
     {
@@ -61,16 +64,16 @@ const MuiButton: Components['MuiButton'] = {
         fontSize: '0.7rem',
         fontFamily: 'Roboto Mono',
         padding: '0 5px',
-        backgroundColor: palette.control.light,
+        backgroundColor: palette.control.bg,
         border: '2px solid',
         borderRadius: '15px',
-        borderColor: palette.control.dark,
+        borderColor: palette.control.border,
         fontWeight: '600',
-        _hover: {
-          backgroundColor: palette.control.main
+        '&:hover': {
+          backgroundColor: palette.control.bg
         },
-        _active: {
-          backgroundColor: palette.control.main
+        '&:active': {
+          backgroundColor: palette.control.bg
         }
       }
     }

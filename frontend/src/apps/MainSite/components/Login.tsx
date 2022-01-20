@@ -1,19 +1,15 @@
 import { useForm } from 'react-hook-form';
-import { useAuthContext } from '../context/AuthContext';
+import { useAuthContext } from 'context/AuthContext';
 
 interface Props {}
 
-const Register = (props: Props) => {
-  const {
-    register,
-    handleSubmit
-    // formState: { errors }
-  } = useForm();
+const Login = (props: Props) => {
+  const { register, handleSubmit } = useForm();
 
-  const { signUp } = useAuthContext();
+  const { signIn } = useAuthContext();
 
-  const onSubmit = (formData: unknown) => {
-    signUp(formData);
+  const onSubmit = (formData: any) => {
+    signIn(formData);
   };
 
   return (
@@ -25,4 +21,4 @@ const Register = (props: Props) => {
   );
 };
 
-export default Register;
+export default Login;

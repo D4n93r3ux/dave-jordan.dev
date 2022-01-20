@@ -7,9 +7,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 
-interface Props {}
-
-const AppRoutes = (props: Props) => {
+const MainSiteRoutes = () => {
   return (
     <Routes>
       <Route
@@ -33,4 +31,4 @@ const AppRoutes = (props: Props) => {
   );
 };
 
-export default AppRoutes;
+export default MainSiteRoutes;

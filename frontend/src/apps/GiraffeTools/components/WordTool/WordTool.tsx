@@ -4,7 +4,7 @@ import testData from '../../testData';
 import { useState, useCallback } from 'react';
 import type { SectionData, SetButtonStatusFunction } from '../../types';
 import { shouldButtonRender } from '../../utils';
-import { Box } from '@mui/material';
+import { Box, Paper } from '@mui/material';
 
 const WordTool = () => {
   const [data, setData] = useState(testData);
@@ -32,6 +32,7 @@ const WordTool = () => {
   // This horrible nested mapping function is horrible.
   // Pending better solution.
   const resetButtons = () => {
+    window.scrollTo(0, 0);
     setView('all');
     setData(currentData => {
       const newData = {
@@ -67,6 +68,7 @@ const WordTool = () => {
     return (
       shouldSectionRender(sectionData) && (
         <WordSection
+          key={sectionIndex}
           sectionType={sectionType}
           sectionIndex={sectionIndex}
           sectionDisplayName={sectionDisplayName}
@@ -80,12 +82,12 @@ const WordTool = () => {
   });
 
   return (
-    <>
-      <Box display='flex' flexDirection='column' marginBottom='30px'>
+    <Paper elevation={0} square sx={{ minHeight: '100vh' }}>
+      <Box display='flex' flexDirection='column' paddingBottom='30px'>
         {sections}
       </Box>
       <Controls view={view} cycleView={cycleView} resetButtons={resetButtons} />
-    </>
+    </Paper>
   );
 };
 

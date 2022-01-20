@@ -37,6 +37,7 @@ const WordSection = ({
     return (
       shouldCardRender(cardData) && (
         <WordCard
+          key={cardIndex}
           sectionType={sectionType}
           sectionIndex={sectionIndex}
           cardIndex={cardIndex}
@@ -56,7 +57,9 @@ const WordSection = ({
     ['needs', 'needs']
   ]);
 
-  const sectionHeadingBackgroundColor = `${colorMap.get(sectionType)}.dark`;
+  const sectionHeadingBackgroundColor = `${colorMap.get(
+    sectionType
+  )}.headingBg`;
 
   return (
     <Box

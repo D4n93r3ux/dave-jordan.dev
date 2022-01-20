@@ -20,10 +20,10 @@ export type AuthContextValue = AuthState & {
   signOut(): void;
 };
 
-const [useAuthContext, AuthContextProvider] =
+const [useAuthContext, AuthContextProviderComponent] =
   createSafeContext<AuthContextValue>();
 
-const AuthContext: React.FC = ({ children }) => {
+const AuthContextProvider: React.FC = ({ children }) => {
   const initialState: AuthState = {
     isLoading: true,
     user: null,
@@ -117,8 +117,11 @@ const AuthContext: React.FC = ({ children }) => {
     signOut
   };
 
-  return <AuthContextProvider value={value}>{children}</AuthContextProvider>;
+  return (
+    <AuthContextProviderComponent value={value}>
+      {children}
+    </AuthContextProviderComponent>
+  );
 };
 
-export default AuthContext;
-export { useAuthContext };
+export { useAuthContext, AuthContextProvider };

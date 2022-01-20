@@ -50,9 +50,9 @@ const WordCard: React.FC<Props> = ({
     ['needs', 'needs']
   ]);
 
-  const backgroundColor = `${colorMap.get(sectionType)}.light`;
-  const borderColor = `${colorMap.get(sectionType)}.main`;
-  const cardHeadingColor = `${colorMap.get(sectionType)}.dark`;
+  const backgroundColor = `${colorMap.get(sectionType)}.bg`;
+  const borderColor = `${colorMap.get(sectionType)}.border`;
+  const cardHeadingColor = `${colorMap.get(sectionType)}.heading`;
 
   return (
     <Paper

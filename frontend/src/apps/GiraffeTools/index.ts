@@ -1,1 +1,1 @@
-export { default } from './GiraffeToolsRoutes';
+export { default } from './GiraffeToolsApp';

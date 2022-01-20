@@ -1,6 +1,7 @@
 import { Box, Button } from '@mui/material';
-// import { Flex, Button } from '@chakra-ui/react';
-
+import LightModeOutlined from '@mui/icons-material/LightModeOutlined';
+import DarkModeOutlined from '@mui/icons-material/DarkModeOutlined';
+import { useThemeModeContext } from 'context/ThemeModeContext';
 interface Props {
   view: string;
   cycleView: () => void;
@@ -8,6 +9,8 @@ interface Props {
 }
 
 const Controls = ({ view, cycleView, resetButtons }: Props) => {
+  const { darkMode, toggleDarkMode } = useThemeModeContext();
+
   return (
     <Box
       display='flex'
@@ -16,13 +19,12 @@ const Controls = ({ view, cycleView, resetButtons }: Props) => {
       left='50%'
       justifyContent='center'
       gap='10px'
-      // transform='translateX(-50%)'
       border='2px solid'
       borderBottom='none'
-      borderColor='control.dark'
+      borderColor='control.border'
       borderRadius='18px 18px 0px 0px'
       p='6px'
-      bgcolor='control.light'
+      bgcolor='control.bg'
       sx={{
         transform: 'translateX(-50%)'
       }}
@@ -32,6 +34,9 @@ const Controls = ({ view, cycleView, resetButtons }: Props) => {
       </Button>
       <Button variant='control' onClick={resetButtons}>
         Reset
+      </Button>
+      <Button variant='control' onClick={toggleDarkMode}>
+        {darkMode ? <LightModeOutlined /> : <DarkModeOutlined />}
       </Button>
     </Box>
   );
