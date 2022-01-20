@@ -1,7 +1,7 @@
-import { Heading, Flex, useStyleConfig } from '@chakra-ui/react';
 import WordButton from '../WordButton';
-import type { SetButtonStatusFunction } from '../../types';
 import { shouldButtonRender } from '../../utils';
+import { Box, Paper, Typography } from '@mui/material';
+import type { SetButtonStatusFunction } from '../../types';
 
 interface Props {
   sectionType: string;
@@ -24,11 +24,6 @@ const WordCard: React.FC<Props> = ({
   modes,
   setButtonStatus
 }) => {
-  const cardStyles = useStyleConfig('WordCard', { variant: sectionType });
-  const cardHeadingStyles = useStyleConfig('CardHeading', {
-    variant: sectionType
-  });
-
   const wordButtons = wordButtonData.map(
     ({ word, status }, wordButtonIndex) => {
       return (
@@ -49,17 +44,31 @@ const WordCard: React.FC<Props> = ({
     }
   );
 
-  if (cardIndex === 0 && sectionIndex === 0) console.log(wordButtons[0]);
+  const colorMap = new Map([
+    ['feelingsMetNeeds', 'met'],
+    ['feelingsUnmetNeeds', 'unmet'],
+    ['needs', 'needs']
+  ]);
+
+  const backgroundColor = `${colorMap.get(sectionType)}.light`;
+  const borderColor = `${colorMap.get(sectionType)}.main`;
+  const cardHeadingColor = `${colorMap.get(sectionType)}.dark`;
 
   return (
-    <Flex __css={cardStyles} variant={sectionIndex}>
-      <Heading sx={cardHeadingStyles} size='xl'>
+    <Paper
+      variant='wordCard'
+      sx={{
+        backgroundColor,
+        borderColor
+      }}
+    >
+      <Typography variant='h4' color={cardHeadingColor}>
         {cardDisplayName}
-      </Heading>
-      <Flex flexWrap='wrap' gap='10px' justify='center'>
+      </Typography>
+      <Box display='flex' flexWrap='wrap' gap='10px' justifyContent='center'>
         {wordButtons}
-      </Flex>
-    </Flex>
+      </Box>
+    </Paper>
   );
 };
 

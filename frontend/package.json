@@ -5,10 +5,11 @@
   "proxy": "https://api.dave-jordan.dev",
   "dependencies": {
     "@chakra-ui/react": "^1.7.3",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
     "@fontsource/caveat": "^4.5.0",
     "@fontsource/roboto-mono": "^4.5.0",
+    "@mui/material": "^5.2.8",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -69,12 +70,12 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.4.9",
-    "@storybook/addon-essentials": "^6.4.9",
-    "@storybook/addon-links": "^6.4.9",
-    "@storybook/node-logger": "^6.4.9",
+    "@storybook/addon-actions": "^6.4.13",
+    "@storybook/addon-essentials": "^6.4.13",
+    "@storybook/addon-links": "^6.4.13",
+    "@storybook/node-logger": "^6.4.13",
     "@storybook/preset-create-react-app": "^3.2.0",
-    "@storybook/react": "^6.4.9",
+    "@storybook/react": "^6.4.13",
     "@types/react-router-dom": "^5.3.1",
     "@types/styled-components": "^5.1.15"
   }

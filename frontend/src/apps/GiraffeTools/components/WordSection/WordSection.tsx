@@ -2,6 +2,7 @@ import { Heading, Flex, useStyleConfig } from '@chakra-ui/react';
 import { CardData, SetButtonStatusFunction } from '../../types';
 import WordCard from '../WordCard';
 import { shouldButtonRender } from '../../utils';
+import { Box, Typography } from '@mui/material';
 
 interface Props {
   sectionType: string;
@@ -55,13 +56,33 @@ const WordSection = ({
     );
   });
 
+  const colorMap = new Map([
+    ['feelingsMetNeeds', 'met'],
+    ['feelingsUnmetNeeds', 'unmet'],
+    ['needs', 'needs']
+  ]);
+
+  const sectionHeadingBackgroundColor = `${colorMap.get(sectionType)}.dark`;
+
   return (
-    <Flex __css={sectionStyles}>
-      <Heading sx={sectionHeadingStyles} size='2xl'>
+    <Box
+      display='flex'
+      flexDirection='column'
+      maxWidth='640px'
+      minWidth='320px'
+      width='100%'
+      gap='10px'
+      margin='auto'
+      p='10px 10px 20px'
+    >
+      <Typography
+        variant='h3'
+        sx={{ backgroundColor: sectionHeadingBackgroundColor }}
+      >
         {sectionDisplayName}
-      </Heading>
+      </Typography>
       {cards}
-    </Flex>
+    </Box>
   );
 };
 

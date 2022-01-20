@@ -1,6 +1,6 @@
 import WordButtonComponent from './WordButton';
 import type { ComponentMeta } from '@storybook/react';
-import { Flex } from '@chakra-ui/react';
+import { Box } from '@mui/material';
 
 export default {
   title: 'Giraffe Tools/Atoms/Word Button',
@@ -8,7 +8,14 @@ export default {
 } as ComponentMeta<typeof WordButtonComponent>;
 
 export const WordButton = () => (
-  <Flex gap='10px' p='10px' bg='gray.200'>
+  <Box
+    sx={{
+      display: 'flex',
+      gap: '10px',
+      padding: '10px',
+      backgroundColor: 'lightgray'
+    }}
+  >
     <WordButtonComponent
       word='word'
       status='unselected'
@@ -27,5 +34,5 @@ export const WordButton = () => (
       modes={['unselected', 'met', 'unmet']}
       setButtonStatus={null}
     />
-  </Flex>
+  </Box>
 );

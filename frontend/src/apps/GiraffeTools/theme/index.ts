@@ -1,19 +1,14 @@
-import foundations from './foundations';
-import Button from './components/button';
-import SectionHeading from './components/sectionHeading';
-import CardHeading from './components/cardHeading';
-import WordCard from './components/wordCard';
-import WordSection from './components/wordSection';
+import palette from './palette';
+import typography from './typography';
+import components from './components';
+import { createTheme } from '@mui/material/styles';
+import { responsiveFontSizes } from '@mui/material';
+import type { ThemeOptions } from '@mui/material/styles';
 
-const giraffeOverrides = {
-  ...foundations,
-  components: {
-    Button,
-    CardHeading,
-    SectionHeading,
-    WordCard,
-    WordSection
-  }
+const giraffeTheme: ThemeOptions = {
+  palette,
+  typography,
+  components
 };
 
-export default giraffeOverrides;
+export default responsiveFontSizes(createTheme(giraffeTheme));

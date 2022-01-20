@@ -1,12 +1,18 @@
 import { addDecorator } from '@storybook/react';
-import { ChakraProvider } from '@chakra-ui/react';
-import theme from '../src/theme';
 import '@fontsource/roboto-mono';
 import '@fontsource/caveat';
+import { ThemeProvider } from '@mui/material/styles';
+import giraffeTheme from '../src/apps/GiraffeTools/theme';
+import { CssBaseline } from '@mui/material';
 
-// This decorator, in combination with the alias in main.js,
-// resolves an issue between chakra-ui, Emotion 11 and Storybook.
-addDecorator(story => <ChakraProvider theme={theme}>{story()}</ChakraProvider>);
+console.log(giraffeTheme);
+
+addDecorator(story => (
+  <>
+    <CssBaseline />
+    <ThemeProvider theme={giraffeTheme}>{story()}</ThemeProvider>
+  </>
+));
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

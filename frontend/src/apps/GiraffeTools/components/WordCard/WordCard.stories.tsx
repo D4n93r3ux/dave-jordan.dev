@@ -26,13 +26,13 @@ export const WordCard = () => (
     <WordCardComponent
       {...basicProps}
       sectionType='feelingsMetNeeds'
-      cardDisplayName='Affection'
+      cardDisplayName='Affectionate'
       modes={['unselected', 'met']}
     />
     <WordCardComponent
       {...basicProps}
       sectionType='feelingsUnmetNeeds'
-      cardDisplayName='Anger'
+      cardDisplayName='Afraid'
       modes={['unselected', 'unmet']}
     />
     <WordCardComponent

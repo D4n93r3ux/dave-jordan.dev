@@ -1,4 +1,5 @@
-import { Flex, Button } from '@chakra-ui/react';
+import { Box, Button } from '@mui/material';
+// import { Flex, Button } from '@chakra-ui/react';
 
 interface Props {
   view: string;
@@ -8,27 +9,31 @@ interface Props {
 
 const Controls = ({ view, cycleView, resetButtons }: Props) => {
   return (
-    <Flex
+    <Box
+      display='flex'
       position='fixed'
       bottom='0px'
       left='50%'
       justifyContent='center'
       gap='10px'
-      transform='translateX(-50%)'
+      // transform='translateX(-50%)'
       border='2px solid'
       borderBottom='none'
-      borderColor='yellow.300'
+      borderColor='control.dark'
       borderRadius='18px 18px 0px 0px'
       p='6px'
-      bg='yellow.100'
+      bgcolor='control.light'
+      sx={{
+        transform: 'translateX(-50%)'
+      }}
     >
-      <Button variant='control' size='xs' onClick={cycleView}>
+      <Button variant='control' onClick={cycleView}>
         View: {view}
       </Button>
-      <Button variant='control' size='xs' onClick={resetButtons}>
+      <Button variant='control' onClick={resetButtons}>
         Reset
       </Button>
-    </Flex>
+    </Box>
   );
 };
 

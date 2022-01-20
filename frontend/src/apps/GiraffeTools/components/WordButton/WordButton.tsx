@@ -1,6 +1,6 @@
 import { useState, useEffect, memo } from 'react';
-import { Button } from '@chakra-ui/react';
-import { SetButtonStatusFunction } from '../../types';
+import { Button } from '@mui/material';
+import type { SetButtonStatusFunction } from '../../types';
 
 interface Props {
   sectionIndex?: number;
@@ -13,6 +13,8 @@ interface Props {
   setButtonStatus: SetButtonStatusFunction | null;
 }
 
+type Mode = 'unselected' | 'met' | 'unmet';
+
 const WordButton: React.FC<Props> = ({
   sectionIndex = 0,
   cardIndex = 0,
@@ -23,15 +25,15 @@ const WordButton: React.FC<Props> = ({
   modes,
   setButtonStatus
 }) => {
-  const [mode, setMode] = useState(status);
+  const [mode, setMode] = useState<Mode>(status as Mode);
 
-  useEffect(() => setMode(status), [status]);
+  useEffect(() => setMode(status as Mode), [status]);
 
   const onClick = () => {
     const newStatus =
       view !== 'all'
         ? 'unselected'
-        : modes[(modes.indexOf(mode) + 1) % modes.length];
+        : (modes[(modes.indexOf(mode) + 1) % modes.length] as Mode);
 
     // For testing interactivity in Storybook, this button can fall back
     // to internal state if it has not been passed a callback to set
@@ -50,7 +52,7 @@ const WordButton: React.FC<Props> = ({
     status === view;
 
   return isButtonVisible ? (
-    <Button variant={mode} onClick={onClick}>
+    <Button variant='wordButton' color={mode} onClick={onClick}>
       {word}
     </Button>
   ) : null;
