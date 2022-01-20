@@ -1,10 +1,10 @@
 import WordSection from '../WordSection';
 import Controls from '../Controls';
-import { Flex } from '@chakra-ui/react';
 import testData from '../../testData';
 import { useState, useCallback } from 'react';
 import type { SectionData, SetButtonStatusFunction } from '../../types';
 import { shouldButtonRender } from '../../utils';
+import { Box } from '@mui/material';
 
 const WordTool = () => {
   const [data, setData] = useState(testData);
@@ -81,9 +81,9 @@ const WordTool = () => {
 
   return (
     <>
-      <Flex flexDirection='column' marginBottom='30px'>
+      <Box display='flex' flexDirection='column' marginBottom='30px'>
         {sections}
-      </Flex>
+      </Box>
       <Controls view={view} cycleView={cycleView} resetButtons={resetButtons} />
     </>
   );

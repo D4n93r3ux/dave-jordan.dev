@@ -2,7 +2,7 @@ import { Routes, Route, Outlet } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import About from './components/About';
 import WordTool from './components/WordTool';
-import { Box } from '@chakra-ui/react';
+import { Box } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import giraffeTheme from './theme';
 

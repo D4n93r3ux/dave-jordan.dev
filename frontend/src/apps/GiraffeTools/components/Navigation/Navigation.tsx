@@ -1,21 +1,15 @@
-import { Flex, Link } from '@chakra-ui/react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Box } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 interface Props {}
 
 const Navigation = (props: Props) => {
   return (
-    <Flex gap='10px' p='10px'>
-      <Link as={RouterLink} to='/'>
-        Home
-      </Link>
-      <Link as={RouterLink} to=''>
-        About
-      </Link>
-      <Link as={RouterLink} to='word-tool'>
-        See the Tool
-      </Link>
-    </Flex>
+    <Box display='flex' gap='10px' p='10px'>
+      <Link to='/'>Home</Link>
+      <Link to=''>About</Link>
+      <Link to='word-tool'>See the Tool</Link>
+    </Box>
   );
 };
 

@@ -1,6 +1,6 @@
 import WordSectionComponent from './WordSection';
 import type { ComponentMeta } from '@storybook/react';
-import { Flex } from '@chakra-ui/react';
+import { Box } from '@mui/material';
 
 export default {
   title: 'Giraffe Tools/Organisms/Word Section',
@@ -14,7 +14,7 @@ const basicProps = {
 };
 
 export const WordSection = () => (
-  <Flex flexDir='column' gap='10px'>
+  <Box display='flex' flexDirection='column' gap='10px'>
     <WordSectionComponent
       {...basicProps}
       sectionType='feelingsMetNeeds'
@@ -63,5 +63,5 @@ export const WordSection = () => (
         }
       ]}
     />
-  </Flex>
+  </Box>
 );

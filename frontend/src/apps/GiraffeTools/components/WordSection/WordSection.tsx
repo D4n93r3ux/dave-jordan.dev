@@ -1,4 +1,3 @@
-import { Heading, Flex, useStyleConfig } from '@chakra-ui/react';
 import { CardData, SetButtonStatusFunction } from '../../types';
 import WordCard from '../WordCard';
 import { shouldButtonRender } from '../../utils';
@@ -26,11 +25,6 @@ const WordSection = ({
   view,
   setButtonStatus
 }: Props) => {
-  const sectionStyles = useStyleConfig('WordSection');
-  const sectionHeadingStyles = useStyleConfig('SectionHeading', {
-    variant: sectionType
-  });
-
   const cards = cardData.map((cardData, cardIndex) => {
     const shouldCardRender = ({ wordButtonData }: CardData) => {
       return wordButtonData.some(({ status }) =>

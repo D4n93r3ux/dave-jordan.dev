@@ -1,6 +1,6 @@
 import WordCardComponent from './WordCard';
 import type { ComponentMeta } from '@storybook/react';
-import { Flex } from '@chakra-ui/react';
+import { Box } from '@mui/material';
 
 export default {
   title: 'Giraffe Tools/Molecules/Word Card',
@@ -22,7 +22,7 @@ const basicProps = {
 };
 
 export const WordCard = () => (
-  <Flex flexDir='column' gap='10px'>
+  <Box display='flex' flexDirection='column' gap='10px'>
     <WordCardComponent
       {...basicProps}
       sectionType='feelingsMetNeeds'
@@ -41,5 +41,5 @@ export const WordCard = () => (
       cardDisplayName='Connection'
       modes={['unselected', 'met', 'unmet']}
     />
-  </Flex>
+  </Box>
 );
